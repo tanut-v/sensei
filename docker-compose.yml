@@ -1,0 +1,28 @@
+version: '3.3'
+services:
+  db:
+    image: postgres:10.5-alpine
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
+  web:
+    build: .
+    environment:
+      WEBPACKER_DEV_SERVER_HOST: webpacker
+    command: /bin/bash -c "rm -rf ./tmp/pids/server.pid && bundle exec rails s -b '0.0.0.0'"
+    volumes:
+      - ./bundle_cache:/bundle
+      - .:/app
+    ports:
+      - '3000:3000'
+    depends_on:
+      - db
+  webpacker:
+    build: .
+    environment:
+      WEBPACKER_DEV_SERVER_HOST: 0.0.0.0
+    command: ./bin/webpack-dev-server
+    volumes:
+      - ./bundle_cache:/bundle
+      - .:/app
+    ports:
+      - '3035:3035'
