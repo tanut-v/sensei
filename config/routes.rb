@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :articles, only: %w(show, new, index)
+  resources :articles
 
   namespace :api do
     resources :articles
