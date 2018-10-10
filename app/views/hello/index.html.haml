@@ -1,3 +1,4 @@
-%h1 Hello#index
-%p Find me in app/views/hello/index.html.erb
-= react_component "hello_world", greeting: "Hello from react-rails."
+- content_for :head do
+  = javascript_pack_tag 'todo_list'
+
+= react_component 'todo_list/todo_list'
