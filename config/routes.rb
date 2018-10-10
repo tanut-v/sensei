@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  resources :articles, only: %w(show, new, index)
+  resources :articles, only: %i[index new show edit]
 
   namespace :api do
-    resources :articles
+    resources :articles, only: %i[create update destroy show]
   end
 end
