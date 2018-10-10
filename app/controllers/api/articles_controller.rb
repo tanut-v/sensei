@@ -3,7 +3,7 @@ module Api
     def show
       @article = Article.find(params[:id])
 
-      render :json
+      render json: @article
     end
 
     def create
@@ -17,11 +17,23 @@ module Api
     end
 
     def update
+      @article = Article.find(params[:id])
 
+      if @article.update(article_params)
+        render json: {'result': 'success'}
+      else
+        render json: {'result': 'error'}
+      end
     end
 
     def destroy
+      @article = Article.find(params[:id])
 
+      if @article.destroy
+        render json: {'result': 'success'}
+      else
+        render json: {'result': 'error'}
+      end
     end
 
     private
