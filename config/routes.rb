@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :articles, only: %w(show, new, index)
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  namespace :api do
+    resources :articles
+  end
 end
