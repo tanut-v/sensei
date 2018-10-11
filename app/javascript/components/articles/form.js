@@ -41,10 +41,6 @@ export default class Form extends Component {
     this.closeModal()
   }
 
-  updateState = (values) => {
-    this.props.onSubmit({ ...values, 'image_url': this.state.currentImg })
-  }
-
   renderImgs = () => {
     const { imgUrls } = this.state
 
@@ -93,7 +89,7 @@ export default class Form extends Component {
       <div style={{width: '60%'}}>
         <Formik
           initialValues={{ title: '', content: '' }}
-          onSubmit={values => this.updateState(values)}
+          onSubmit={values => this.props.onSubmit({ ...values, 'image_url': this.state.currentImg })}
           validationSchema={
             yup.object().shape({
               title: yup.string().required(),

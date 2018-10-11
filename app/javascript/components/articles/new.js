@@ -2,15 +2,6 @@ import React, { Component, Fragment } from 'react'
 import Form from './form'
 
 class NewArticle extends Component {
-
-  state = {
-    article: {
-      title: '',
-      content: '',
-      imageUrl: ''
-    }
-  }
-
   createArticle = (values) => {
     fetch('http://localhost:3000/api/articles', {
       method: 'POST',
@@ -25,7 +16,7 @@ class NewArticle extends Component {
   render() {
     return (
       <Fragment>
-        <Form article={this.state.article} onSubmit={this.createArticle}/>
+        <Form onSubmit={this.createArticle}/>
       </Fragment>
     )
   }
