@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import Layout from '../shared/layout'
 
 export default class ShowArticle extends Component {

@@ -1,0 +1,29 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  height: 50vh;
+}
+
+.container > span {
+  width: auto;
+  margin: 0;
+}
+
+.container > span:nth-child(3n+1) {
+    height: 200px;
+}
+
+.container > span:nth-child(3n+2) {
+    height: 150px;
+}
+
+.container > span:nth-child(3n+3) {
+    height: 100px;
+}
+
+.img {
+  width: 100%;
+  height : 100%;
+}

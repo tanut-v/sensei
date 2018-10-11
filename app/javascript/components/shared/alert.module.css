@@ -1,0 +1,16 @@
+.flash-message {
+  display: flex;
+  padding: 16px;
+}
+
+.closeButton {
+  margin-left: auto;
+}
+
+.success {
+  background-color: green;
+}
+
+.error {
+  background-color: red;
+}

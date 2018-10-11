@@ -17,7 +17,7 @@ class NewArticle extends Component {
     .then(res => {
       if(res.status !== 201) return Promise.reject('error')
 
-      this.props.state.setState({ flashMessage: 'The article has been created.' })
+      this.props.state.setState({ flashMessage: { type: "success", message: "The article has been created." } })
 
       return res.json()
     })
