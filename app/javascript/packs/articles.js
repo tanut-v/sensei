@@ -1,1 +1,1 @@
-import '../components/articles/form'
+import '../components/articles/new'
