@@ -10,7 +10,7 @@ module Api
       @article = Article.new(article_params)
 
       if @article.save
-        render json: @article
+        render json: @article, status: 201
       else
         render json: {'result': 'error'}
       end

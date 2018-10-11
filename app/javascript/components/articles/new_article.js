@@ -1,5 +1,8 @@
 import React, { Component, Fragment } from 'react'
+
 import ArticleFormWrapper from './article_form_wrapper'
+import withState from '../../lib/with_state'
+import Layout from '../shared/layout'
 
 class NewArticle extends Component {
   createArticle = (article) => {
@@ -11,15 +14,23 @@ class NewArticle extends Component {
       },
       body: JSON.stringify(article)
     })
+    .then(res => {
+      if(res.status !== 201) return Promise.reject('error')
+
+      this.props.state.setState({ flashMessage: 'The article has been created.' })
+
+      return res.json()
+    })
+    .then(({ id }) => Turbolinks.visit(`/articles/${id}`))
   }
 
   render() {
     return (
-      <Fragment>
+      <Layout>
         <ArticleFormWrapper onSubmit={this.createArticle}/>
-      </Fragment>
+      </Layout>
     )
   }
 }
 
-export default NewArticle
+export default withState(NewArticle)

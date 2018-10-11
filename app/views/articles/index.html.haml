@@ -1,6 +1,7 @@
 = link_to 'new', new_article_path
+
 - @articles.each do |article|
-  %p= article.id
-  %p= article.title
-  %p= article.content
-  %p= article.image_url
+  .article-wrapper
+    %img{src: "#{article.image_url}"}
+    %span
+      = article.title
