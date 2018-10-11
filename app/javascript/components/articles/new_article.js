@@ -1,22 +1,22 @@
 import React, { Component, Fragment } from 'react'
-import Form from './form'
+import ArticleFormWrapper from './article_form_wrapper'
 
 class NewArticle extends Component {
-  createArticle = (values) => {
-    fetch('http://localhost:3000/api/articles', {
+  createArticle = (article) => {
+    fetch('/api/articles', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(values)
+      body: JSON.stringify(article)
     })
   }
 
   render() {
     return (
       <Fragment>
-        <Form onSubmit={this.createArticle}/>
+        <ArticleFormWrapper onSubmit={this.createArticle}/>
       </Fragment>
     )
   }
